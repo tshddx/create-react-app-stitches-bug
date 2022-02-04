@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { styled } from '@stitches/react';
+import { useState } from 'react';
+
+const Box = styled('div');
 
 function App() {
+  const [index, setIndex] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <html lang="en" key={index}>
+      <head>
+        <title>React App</title>
+      </head>
+      <body>
+        <Box
+          css={{ backgroundColor: 'LightPink', padding: '2em', fontSize: 24 }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Box>This text and button should be inside a pink box.</Box>
+          <Box
+            as="button"
+            onClick={() => setIndex((i) => i + 1)}
+            css={{ fontSize: 'inherit' }}
+          >
+            Click me to re-render the html tag
+          </Box>
+        </Box>
+      </body>
+    </html>
   );
 }
 
